@@ -1,31 +1,92 @@
 ---
 const year = new Date().getFullYear();
+
+/** Match contact page — public page and private group */
+const facebookPageUrl = "https://www.facebook.com/profile.php?id=100095143916209";
+const facebookGroupUrl = "https://www.facebook.com/groups/667900092060139/";
+
+const exploreLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about/", label: "About us" },
+  { href: "/events/", label: "Events" },
+  { href: "/resources/", label: "Resources" },
+  { href: "/contact/", label: "Contact" },
+] as const;
 ---
 
-<footer class="mt-auto border-t border-brand-teal/10 bg-brand-surface">
-  <div
-    class="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 text-sm text-brand-teal/90 sm:flex-row sm:items-start sm:justify-between sm:px-6"
-  >
-    <div>
-      <p class="font-bold text-brand-teal">NDMDs</p>
-      <p class="mt-1 max-w-md">
-        UMMSS-affiliated student society for neurodiverse and neurodivergent MD
-        students at the University of Melbourne.
-      </p>
-    </div>
-    <div>
-      <p class="font-semibold text-brand-teal">Acknowledgement</p>
-      <p class="mt-1 max-w-sm">
-        We acknowledge the Traditional Owners of the land on which the
-        University of Melbourne stands, the Wurundjeri Woi Wurrung and Bunurong
-        peoples of the Kulin Nation, and pay our respects to Elders past and
-        present.
-      </p>
+<footer class="mt-auto bg-brand-teal text-white">
+  <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
+    <div class="grid gap-8 md:grid-cols-3 md:gap-10">
+      <div>
+        <h2 class="text-xs font-bold uppercase tracking-wider text-white/85">About</h2>
+        <p class="mt-3 text-sm font-bold leading-snug text-white">
+          NDMDs — Neurodiversity in Medicine Society
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-white/85">
+          An official UMMSS-affiliated club supporting neurodiverse MD students at the
+          University of Melbourne.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xs font-bold uppercase tracking-wider text-white/85">Explore</h2>
+        <nav class="mt-3" aria-label="Footer">
+          <ul class="space-y-2 text-sm">
+            {
+              exploreLinks.map(({ href, label }) => (
+                <li>
+                  <a
+                    href={href}
+                    class="text-white/90 transition hover:text-white hover:underline"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+
+      <div>
+        <h2 class="text-xs font-bold uppercase tracking-wider text-white/85">Connect</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>
+            <a
+              href={facebookPageUrl}
+              class="text-white/90 transition hover:text-white hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              NDMDs public Facebook page
+              <span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={facebookGroupUrl}
+              class="text-white/90 transition hover:text-white hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Private Facebook group (ND/NDq members)
+              <span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div
-    class="border-t border-brand-teal/10 px-4 py-4 text-center text-xs text-brand-teal/70 sm:px-6"
-  >
-    <p>&copy; {year} NDMDs — Neurodiversity in Medicine Society</p>
+
+  <div class="border-t border-white/15 bg-brand-teal-muted/30 px-4 py-4 sm:px-6">
+    <div
+      class="mx-auto max-w-5xl flex flex-col gap-2 text-center text-xs text-white/85 sm:text-left"
+    >
+      <p>&copy; {year} NDMDs — Neurodiversity in Medicine Society</p>
+      <p class="text-white/75">
+        This is a student-run community. We are not clinicians and do not provide
+        medical advice.
+      </p>
+    </div>
   </div>
 </footer>

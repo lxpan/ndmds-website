@@ -1,0 +1,48 @@
+---
+export interface BreadcrumbCrumb {
+  label: string;
+  /** Omit on the last item (current page). */
+  href?: string;
+}
+
+interface Props {
+  crumbs: BreadcrumbCrumb[];
+}
+
+const { crumbs } = Astro.props;
+
+if (!crumbs.length) {
+  throw new Error("Breadcrumb: crumbs array must not be empty.");
+}
+---
+
+<nav aria-label="Breadcrumb" class="text-sm">
+  <ol class="m-0 flex list-none flex-wrap items-center gap-y-1 p-0">
+    {
+      crumbs.map((crumb, i) => {
+        const isLast = i === crumbs.length - 1;
+        return (
+          <li class="flex items-center">
+            {i > 0 && (
+              <span class="mx-1.5 text-brand-teal/45 select-none" aria-hidden="true">
+                &gt;
+              </span>
+            )}
+            {isLast ? (
+              <span class="font-medium text-brand-teal/60" aria-current="page">
+                {crumb.label}
+              </span>
+            ) : (
+              <a
+                href={crumb.href}
+                class="font-medium text-brand-teal underline-offset-2 transition hover:underline"
+              >
+                {crumb.label}
+              </a>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>

@@ -1,4 +1,5 @@
 ---
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
 
 const myths = [
@@ -41,14 +42,14 @@ const myths = [
 >
   <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
     <header class="max-w-3xl">
-      <p class="text-sm font-semibold text-brand-teal/80">
-        <a class="underline decoration-brand-cyan underline-offset-2 hover:decoration-brand-teal" href="/about/"
-          >About</a
-        >
-        <span aria-hidden="true"> · </span>
-        <span class="text-brand-teal">Mythbusting</span>
-      </p>
-      <h1 class="mt-2 text-4xl font-extrabold text-brand-teal sm:text-5xl">Mythbusting</h1>
+      <Breadcrumb
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "About", href: "/about/" },
+          { label: "Mythbusting" },
+        ]}
+      />
+      <h1 class="mt-4 text-4xl font-extrabold text-brand-teal sm:text-5xl">Mythbusting</h1>
       <p class="mt-4 text-lg text-brand-teal/90">
         Six myths and realities from our society poster. Expand each row to read the
         full reality — or scan the list on a small screen.
