@@ -95,7 +95,8 @@ const aboutSummaryClass = aboutSectionActive()
           </a>
         </li>
 
-        <li class="md:hidden">
+        <!-- Mobile only: &lt; md. Desktop uses hover dropdown below. -->
+        <li class="max-md:block md:hidden">
           <details class="rounded-2xl border border-brand-teal/10 bg-white/60">
             <summary
               class:list={[
@@ -132,7 +133,8 @@ const aboutSummaryClass = aboutSectionActive()
           </details>
         </li>
 
-        <li class="group relative hidden md:block">
+        <!-- Desktop only: md+. Hidden on small screens so it never stacks with mobile About. -->
+        <li class="group relative max-md:hidden md:block">
           <a
             href="/about/"
             class:list={[
