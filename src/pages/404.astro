@@ -1,0 +1,23 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<PageLayout
+  title="Page not found"
+  description="The page you are looking for does not exist on the NDMDs website."
+>
+  <div class="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6 sm:py-24">
+    <p class="text-sm font-bold uppercase tracking-wide text-brand-teal/80">404</p>
+    <h1 class="mt-2 text-3xl font-extrabold text-brand-teal sm:text-4xl">
+      Page not found
+    </h1>
+    <p class="mx-auto mt-4 max-w-md text-lg text-brand-teal/90">
+      That link might be old or mistyped. Try the navigation above or head home.
+    </p>
+    <a
+      href="/"
+      class="mt-8 inline-flex rounded-full bg-brand-teal px-6 py-3 text-base font-bold text-white transition hover:bg-brand-teal-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
+      >Back to home</a
+    >
+  </div>
+</PageLayout>

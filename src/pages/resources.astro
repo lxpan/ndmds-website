@@ -1,0 +1,146 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+
+const sections = [
+  {
+    title: "University support",
+    intro:
+      "Services and programs through the University and MD student association.",
+    links: [
+      {
+        label: "Student support and wellbeing (University of Melbourne)",
+        href: "https://students.unimelb.edu.au/student-support",
+      },
+      {
+        label: "CAPS — Navigating Autistic Student Life program (Thursdays)",
+        href: "https://students.unimelb.edu.au/student-support/counselling",
+        note:
+          "Includes webinars on practical strategies for autistic and ADHD students. The CAPS counselling hub lists current groups, workshops, and how to register — program names and schedules can change each semester.",
+      },
+      {
+        label: "Health & wellbeing — UMMSS",
+        href: "https://ummss.org.au/front-page/wellbeing/",
+      },
+      {
+        label: "Student services workshops and webinars",
+        href: "https://services.unimelb.edu.au/",
+        note: "Some recordings require a University login.",
+      },
+    ],
+  },
+  {
+    title: "Understanding & self-care",
+    intro: "Frameworks and hubs written with neurodivergent students in mind.",
+    links: [
+      {
+        label: "Spoon theory — balancing energy",
+        href: "https://neurodivergentinsights.com/",
+      },
+      {
+        label: "Neurodiversity Hub — student-focused resources",
+        href: "https://neurodiversityhub.org/",
+      },
+      {
+        label: "Neurodivergent Insights — resource library (Notion)",
+        href: "https://neurodivergentinsights.notion.site/",
+        note:
+          "A large curated library of neurodivergent-related material (same community as the spoon-theory site).",
+      },
+    ],
+  },
+  {
+    title: "Podcasts",
+    intro:
+      "Stories and series members have found useful — including Canadian public radio.",
+    links: [
+      {
+        label: "CBC — White Coat, Black Art (includes The Real Good Doctor episode)",
+        href: "https://www.cbc.ca/radio/whitecoat",
+      },
+      {
+        label: "CBC Ideas — Neurodiversity and the Myth of Normal (Part 1)",
+        href: "https://www.cbc.ca/listen/live-radio/1-23-ideas/clip/16124230-neurodiversity-myth-normal-part-one",
+        note: "From CBC’s Ideas program (English Canada).",
+      },
+      {
+        label: "CBC Ideas — Neurodiversity and the Myth of Normal (Part 2)",
+        href: "https://www.cbc.ca/listen/live-radio/1-23-ideas/clip/16124509-neurodiversity-myth-normal-part-two",
+      },
+    ],
+  },
+  {
+    title: "Study & organisation tools",
+    intro: "No endorsement — just tools students have found useful.",
+    links: [
+      {
+        label: "Notion",
+        href: "https://www.notion.com/",
+      },
+      {
+        label: "Obsidian",
+        href: "https://obsidian.md/",
+      },
+    ],
+  },
+] as const;
+---
+
+<PageLayout
+  title="Resources"
+  description="University support, wellbeing links, and study tools for neurodivergent MD students — curated by NDMDs."
+>
+  <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+    <header class="max-w-3xl">
+      <h1 class="text-4xl font-extrabold text-brand-teal sm:text-5xl">Resources</h1>
+      <p class="mt-4 text-lg text-brand-teal/90">
+        A starting list of services and tools that can help with navigating med
+        school as a neurodivergent student. If something here helped you, consider
+        sharing it in our Facebook group so others can discover it too.
+      </p>
+    </header>
+
+    <div class="mt-12 space-y-12">
+      {
+        sections.map((section, i) => (
+          <section
+            class="rounded-2xl border border-brand-teal/10 bg-brand-surface p-6 sm:p-8"
+            aria-labelledby={`resource-section-${i}`}
+          >
+            <h2 id={`resource-section-${i}`} class="text-xl font-extrabold text-brand-teal">
+              {section.title}
+            </h2>
+            <p class="mt-2 text-brand-teal/90">{section.intro}</p>
+            <ul class="mt-5 space-y-3">
+              {section.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="font-semibold text-brand-teal underline decoration-brand-cyan underline-offset-2 transition hover:decoration-brand-teal"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {link.label}
+                    <span class="sr-only"> (opens in a new tab)</span>
+                  </a>
+                  {"note" in link && link.note ? (
+                    <span class="mt-1 block text-sm text-brand-teal/75">{link.note}</span>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+
+    <p class="mt-10 text-sm text-brand-teal/80">
+      Links were collated from society posts and may change. Let us know on the{" "}
+      <a
+        class="font-semibold underline decoration-brand-cyan underline-offset-2 hover:decoration-brand-teal"
+        href="/contact/"
+        >contact page</a
+      >{" "}
+      if something is broken or outdated.
+    </p>
+  </div>
+</PageLayout>

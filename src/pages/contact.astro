@@ -1,0 +1,204 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+
+const email = "ndmds@student.unimelb.edu.au";
+const facebookGroupUrl = "https://www.facebook.com/groups/667900092060139/";
+const facebookPageUrl = "https://www.facebook.com/profile.php?id=100095143916209";
+const neurodiversityArticleUrl =
+  "https://drive.google.com/file/d/1oU9FyoXPhO4GJ8P1oP4MnTzE2lgVXpO/view?usp=sharing";
+
+/** ND/NDq MD student member signup (Google Form, Qualtrics, etc.). */
+// TODO(ndmds): Replace empty string with the live ND member signup form URL.
+const ndMemberSignupUrl = "";
+
+/** Associate / ally signup (non-ND supporters). */
+// TODO(ndmds): Replace empty string with the live associate member signup form URL.
+const associateMemberSignupUrl = "";
+---
+
+<PageLayout
+  title="Contact"
+  description="Get in touch with NDMDs — Facebook, member signup, email, and resources for Neurodiversity in Medicine Society."
+>
+  <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+    <header class="max-w-3xl">
+      <h1 class="text-4xl font-extrabold text-brand-teal sm:text-5xl">Contact</h1>
+      <p class="mt-4 text-lg text-brand-teal/90">
+        The private Facebook group is the best place for event announcements and
+        informal chat among members. We also maintain a public Facebook page for allies
+        and supporters. Use the signup forms below when they are live, or email us for
+        anything you would rather not post publicly.
+      </p>
+    </header>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      <!-- Private group: confirmed URL -->
+      <section
+        class="rounded-2xl border border-brand-teal/10 bg-brand-surface p-6 shadow-sm"
+        aria-labelledby="fb-group-heading"
+      >
+        <h2 id="fb-group-heading" class="text-xl font-bold text-brand-teal">
+          Private Facebook group
+        </h2>
+        <p class="mt-2 text-brand-teal/85">
+          For ND/NDq MD students. Only members see who is in the group and what is
+          posted; the group itself is visible so people can find it.
+        </p>
+        <a
+          href={facebookGroupUrl}
+          class="mt-5 inline-flex items-center justify-center rounded-full bg-brand-teal px-5 py-2.5 text-sm font-bold text-white transition hover:bg-brand-teal-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Open Facebook group
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+      </section>
+
+      <!-- Public page: confirmed URL -->
+      <section
+        class="rounded-2xl border border-brand-teal/10 bg-brand-surface p-6 shadow-sm"
+        aria-labelledby="fb-page-heading"
+      >
+        <h2 id="fb-page-heading" class="text-xl font-bold text-brand-teal">
+          Public Facebook page
+        </h2>
+        <p class="mt-2 text-brand-teal/85">
+          For allies, staff, and friends who want to follow news without joining the
+          private group.
+        </p>
+        <a
+          href={facebookPageUrl}
+          class="mt-5 inline-flex items-center justify-center rounded-full border-2 border-brand-teal/30 bg-white px-5 py-2.5 text-sm font-bold text-brand-teal transition hover:border-brand-teal/50 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Open public page
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+      </section>
+
+      <!-- TODO(ndmds): Set ndMemberSignupUrl in frontmatter when the ND member form URL is ready. -->
+      <section
+        class="rounded-2xl border border-dashed border-brand-cyan/50 bg-gradient-to-br from-white to-brand-surface p-6 shadow-sm"
+        aria-labelledby="nd-signup-heading"
+      >
+        <h2 id="nd-signup-heading" class="text-xl font-bold text-brand-teal">
+          ND member signup
+        </h2>
+        <p class="mt-2 text-brand-teal/85">
+          For neurodivergent and neurodivergent-questioning MD students joining the
+          society as members.
+        </p>
+        {
+          ndMemberSignupUrl ? (
+            <a
+              href={ndMemberSignupUrl}
+              class="mt-5 inline-flex items-center justify-center rounded-full bg-brand-teal px-5 py-2.5 text-sm font-bold text-white transition hover:bg-brand-teal-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Open ND member signup form
+              <span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          ) : (
+            <p class="mt-5 rounded-xl bg-white/80 px-4 py-3 text-sm text-brand-teal/90 ring-1 ring-brand-teal/15">
+              We’ll add the official signup link here when it’s ready. Until then, message
+              us in the private Facebook group or by email.
+            </p>
+          )
+        }
+      </section>
+
+      <!-- TODO(ndmds): Set associateMemberSignupUrl in frontmatter when the ally form URL is ready. -->
+      <section
+        class="rounded-2xl border border-dashed border-brand-cyan/50 bg-gradient-to-br from-white to-brand-surface p-6 shadow-sm"
+        aria-labelledby="ally-signup-heading"
+      >
+        <h2 id="ally-signup-heading" class="text-xl font-bold text-brand-teal">
+          Associate member (ally) signup
+        </h2>
+        <p class="mt-2 text-brand-teal/85">
+          For staff, students, and supporters who are not ND but want to register as
+          associate members.
+        </p>
+        {
+          associateMemberSignupUrl ? (
+            <a
+              href={associateMemberSignupUrl}
+              class="mt-5 inline-flex items-center justify-center rounded-full border-2 border-brand-teal/30 bg-white px-5 py-2.5 text-sm font-bold text-brand-teal transition hover:border-brand-teal/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Open associate member signup form
+              <span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          ) : (
+            <p class="mt-5 rounded-xl bg-white/80 px-4 py-3 text-sm text-brand-teal/90 ring-1 ring-brand-teal/15">
+              We’ll add the official associate signup link here when it’s ready. Until
+              then, follow the public page or email us.
+            </p>
+          )
+        }
+      </section>
+
+      <section
+        class="rounded-2xl border border-brand-teal/10 bg-brand-surface p-6 shadow-sm lg:col-span-2"
+        aria-labelledby="email-heading"
+      >
+        <div class="grid gap-8 lg:grid-cols-2 lg:items-start">
+          <div>
+            <h2 id="email-heading" class="text-xl font-bold text-brand-teal">Email</h2>
+            <p class="mt-2 text-brand-teal/85">
+              For private enquiries, collaboration ideas, or accessibility requests.
+            </p>
+            <a
+              href={`mailto:${email}`}
+              class="mt-5 inline-flex break-all text-lg font-bold text-brand-teal underline decoration-brand-cyan decoration-2 underline-offset-2 transition hover:decoration-brand-teal"
+            >
+              {email}
+            </a>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-brand-teal">Longer read</h3>
+            <p class="mt-2 text-brand-teal/85">
+              Our society has shared a fuller article on neurodiversity (Google Drive).
+            </p>
+            <a
+              href={neurodiversityArticleUrl}
+              class="mt-4 inline-flex font-semibold text-brand-teal underline decoration-brand-cyan underline-offset-2 transition hover:decoration-brand-teal"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Open article (Google Drive)
+              <span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section
+      class="mt-12 max-w-3xl rounded-2xl border border-dashed border-brand-teal/25 bg-white p-6"
+      aria-labelledby="crisis-heading"
+    >
+      <h2 id="crisis-heading" class="text-lg font-bold text-brand-teal">
+        Need urgent help?
+      </h2>
+      <p class="mt-2 text-brand-teal/90">
+        NDMDs cannot provide crisis support. If you or someone else is unsafe, call{" "}
+        <strong class="font-bold">000</strong>. For 24-hour mental health support, call{" "}
+        <strong class="font-bold">13 11 14</strong> (Lifeline) or{" "}
+        <strong class="font-bold">13 92 76</strong> (Beyond Blue). The University’s
+        counselling and crisis lines are listed on the{" "}
+        <a
+          class="font-semibold underline decoration-brand-cyan underline-offset-2 hover:decoration-brand-teal"
+          href="https://students.unimelb.edu.au/student-support/counselling"
+          rel="noopener noreferrer"
+          target="_blank"
+          >Student Counselling</a
+        > page.
+      </p>
+    </section>
+  </div>
+</PageLayout>

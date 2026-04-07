@@ -1,0 +1,23 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const fullTitle = title.includes("NDMDs") ? title : `${title} | NDMDs`;
+---
+
+<BaseLayout title={fullTitle} description={description}>
+  <div class="flex min-h-dvh flex-col">
+    <SiteHeader />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <SiteFooter />
+  </div>
+</BaseLayout>

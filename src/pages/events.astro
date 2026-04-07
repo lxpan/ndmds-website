@@ -1,0 +1,145 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+
+const upcoming = [
+  {
+    title: "Semester community event",
+    date: "TBC — check Facebook",
+    location: "Parkville campus",
+    blurb:
+      "We run at least one members-only gathering each year — details are announced in the private Facebook group when dates are set.",
+  },
+  {
+    title: "Education & allyship event",
+    date: "TBC — check Facebook",
+    location: "Melbourne Medical School partners welcome",
+    blurb:
+      "Our second annual-style event is open to members plus parties with an established relationship with MMS — topics, venue, and timing are shared in advance on Facebook.",
+  },
+];
+
+const celebrationWeek2026 = [
+  { day: "16 Mar 2026", title: "What is neurodivergence?" },
+  { day: "17 Mar 2026", title: "Share your neurodivergent experiences" },
+  { day: "18 Mar 2026", title: "Neurodivergent resources" },
+  { day: "19 Mar 2026", title: "Lived experience polls" },
+  { day: "20 Mar 2026", title: "Mythbusting" },
+  {
+    day: "23 Mar 2026",
+    title: "Neurodivergent doctor panel",
+    detail: "Wilam Hall, 46–56 Drummond St, Carlton — hybrid with Zoom.",
+  },
+  { day: "29 Mar 2026", title: "Outdoor picnic" },
+];
+
+const pastHighlights = [
+  {
+    title: "Neurodivergent doctor panel — “Neurodivergent minds in medicine”",
+    date: "Monday 23 March 2026 · 5:30–6:30 pm",
+    blurb:
+      "Neurodivergent doctors discussed identity, strengths, barriers, and how different ways of thinking can shape healthcare. Held at Wilam Hall (46–56 Drummond St, Carlton) with a remote option.",
+  },
+  {
+    title: "Outdoor picnic",
+    date: "Saturday 29 March 2026",
+    blurb: "End-of-week celebration — thanks to everyone who came along.",
+  },
+];
+---
+
+<PageLayout
+  title="Events"
+  description="Upcoming and past NDMDs events — Neurodiversity Celebration Week, panels, and picnics for neurodivergent MD students at the University of Melbourne."
+>
+  <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+    <header class="max-w-3xl">
+      <h1 class="text-4xl font-extrabold text-brand-teal sm:text-5xl">Events</h1>
+      <p class="mt-4 text-lg text-brand-teal/90">
+        We aim for at least two substantive events each year — one for members, one
+        including MMS-linked guests — plus online activities during Neurodiversity
+        Celebration Week. Dates for new events are posted in our Facebook group when
+        they are confirmed.
+      </p>
+    </header>
+
+    <section class="mt-12" aria-labelledby="upcoming-heading">
+      <h2 id="upcoming-heading" class="text-2xl font-extrabold text-brand-teal">
+        Upcoming
+      </h2>
+      <ul class="mt-6 space-y-4">
+        {
+          upcoming.map((event) => (
+            <li
+              class="rounded-2xl border-2 border-brand-cyan/40 bg-gradient-to-br from-white to-brand-surface p-6 shadow-sm"
+            >
+              <h3 class="text-xl font-bold text-brand-teal">{event.title}</h3>
+              <p class="mt-1 text-sm font-semibold text-brand-teal/80">
+                {event.date} · {event.location}
+              </p>
+              <p class="mt-3 text-brand-teal/90">{event.blurb}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="mt-16" aria-labelledby="ncw-heading">
+      <h2 id="ncw-heading" class="text-2xl font-extrabold text-brand-teal">
+        Neurodiversity Celebration Week — March 2026
+      </h2>
+      <p class="mt-4 max-w-3xl text-brand-teal/90">
+        During this week we shared posters, lived-experience prompts, resources, a
+        myth-busting day, a neurodivergent doctor panel, and a picnic — celebrating
+        different experiences and perspectives across our community.
+      </p>
+      <figure class="mt-8">
+        <img
+          src="/images/neurodiversity-celebration-week-2026.png"
+          alt="Official NDMDs infographic: Neurodiversity Celebration Week events in March 2026, seven days from 16 March through 29 March, with neurodivergent doctor panel at Wilam Hall and outdoor picnic"
+          width={1200}
+          height={800}
+          class="w-full max-w-3xl rounded-2xl border border-brand-teal/10 bg-white p-2 shadow-sm"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="mt-3 max-w-3xl text-sm text-brand-teal/75">
+          Official schedule graphic for March 2026 — NDMDs Society branding, rainbow
+          event bars, and neurodiversity infinity symbols.
+        </figcaption>
+      </figure>
+      <ol class="mt-8 max-w-3xl list-decimal space-y-2 pl-6 text-brand-teal/90 marker:font-semibold marker:text-brand-teal">
+        {
+          celebrationWeek2026.map((row) => (
+            <li>
+              <span class="font-semibold text-brand-teal">{row.day}</span> — {row.title}
+              {"detail" in row && row.detail ? (
+                <span class="block text-sm text-brand-teal/80 sm:mt-0 sm:inline sm:before:content-['—_']">
+                  {row.detail}
+                </span>
+              ) : null}
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-14" aria-labelledby="past-heading">
+      <h2 id="past-heading" class="text-2xl font-extrabold text-brand-teal">
+        Other past highlights
+      </h2>
+      <ul class="mt-6 space-y-4">
+        {
+          pastHighlights.map((event) => (
+            <li class="rounded-2xl border border-brand-teal/10 bg-white px-5 py-4">
+              <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                <h3 class="font-bold text-brand-teal">{event.title}</h3>
+                <span class="text-sm font-medium text-brand-teal/70">{event.date}</span>
+              </div>
+              <p class="mt-2 text-brand-teal/85">{event.blurb}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</PageLayout>
