@@ -38,10 +38,23 @@ const aboutSummaryClass = aboutSectionActive()
 ---
 
 <!-- relative z-50: keep nav + dropdown above <main> (later in DOM would otherwise paint on top and wash out the menu over the home hero). -->
-<header class="relative z-50 border-b border-brand-teal/10 bg-white/90 backdrop-blur-sm">
+<header class="relative z-50">
   <div
-    class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6"
+    class="border-l-4 border-brand-teal/35 bg-brand-cyan/20 px-3 py-1.5 text-center text-sm text-brand-teal sm:px-4"
+    role="status"
+    aria-live="polite"
   >
+    <span class="inline-flex items-center justify-center gap-2">
+      <span aria-hidden="true" class="shrink-0 select-none opacity-90">🔍</span>
+      <span class="font-medium leading-snug"
+        >This site is a preview and has not yet been officially launched.</span
+      >
+    </span>
+  </div>
+  <div class="border-b border-brand-teal/10 bg-white/90 backdrop-blur-sm">
+    <div
+      class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6"
+    >
     <a
       href="/"
       class="group flex items-center gap-3 rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
@@ -184,5 +197,6 @@ const aboutSummaryClass = aboutSectionActive()
         }
       </ul>
     </nav>
+    </div>
   </div>
 </header>
