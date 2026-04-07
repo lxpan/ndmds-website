@@ -1,0 +1,108 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+
+const myths = [
+  {
+    myth: "Neurodivergence is primarily a disorder to diagnose and treat.",
+    reality:
+      "Many neurodivergent people experience their cognition as an identity as well as a clinical label. Care may focus less on correcting difference and more on supporting functioning, wellbeing, and environment fit.",
+  },
+  {
+    myth: "Difficulty with social norms implies lack of empathy.",
+    reality:
+      "Empathy is usually present but expressed or processed differently. Miscommunication between neurotypical and neurodivergent people is often bidirectional, not a deficit in one person.",
+  },
+  {
+    myth: "Neurodivergence is rare and clinically obvious.",
+    reality:
+      "Many people reach adulthood — including medical training — without diagnosis while adapting to systems designed for different cognitive styles.",
+  },
+  {
+    myth: "Outward independence reflects internal capacity.",
+    reality:
+      'Some individuals appear "high functioning" while managing substantial cognitive load from masking, sensory processing, or executive functioning demands.',
+  },
+  {
+    myth: "Standard learning and clinical environments are neutral.",
+    reality:
+      "Many environments favour specific cognitive styles. What appears to be an individual difficulty may sometimes reflect an environmental mismatch.",
+  },
+  {
+    myth: "Support requires specialised interventions.",
+    reality:
+      "Helpful adjustments are frequently simple — clear expectations, predictable structure, reduced sensory overload, flexibility in communication.",
+  },
+] as const;
+---
+
+<PageLayout
+  title="Mythbusting"
+  description="Six myths and realities about neurodiversity — NDMDs Neurodiversity in Medicine Society."
+>
+  <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+    <header class="max-w-3xl">
+      <p class="text-sm font-semibold text-brand-teal/80">
+        <a class="underline decoration-brand-cyan underline-offset-2 hover:decoration-brand-teal" href="/about/"
+          >About</a
+        >
+        <span aria-hidden="true"> · </span>
+        <span class="text-brand-teal">Mythbusting</span>
+      </p>
+      <h1 class="mt-2 text-4xl font-extrabold text-brand-teal sm:text-5xl">Mythbusting</h1>
+      <p class="mt-4 text-lg text-brand-teal/90">
+        Six myths and realities from our society poster. Expand each row to read the
+        full reality — or scan the list on a small screen.
+      </p>
+    </header>
+
+    <section class="mt-10" aria-labelledby="myth-list-heading">
+      <h2 id="myth-list-heading" class="sr-only">Myths and realities</h2>
+      <div class="space-y-3">
+        {
+          myths.map((item, i) => (
+            <details class="myth-details group rounded-2xl border border-brand-teal/20 bg-white shadow-sm open:border-brand-cyan/35 open:ring-2 open:ring-brand-cyan/25">
+              <summary class="flex cursor-pointer list-none items-start justify-between gap-3 rounded-2xl bg-gradient-to-r from-brand-teal/[0.07] to-brand-cyan/20 px-4 py-4 text-left font-semibold text-brand-teal transition hover:from-brand-teal/10 hover:to-brand-cyan/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal">
+                <span>
+                  <span class="mr-2 inline-flex h-6 min-w-[1.75rem] items-center justify-center rounded-full bg-brand-teal text-xs font-bold text-white">
+                    {i + 1}
+                  </span>
+                  <span class="text-brand-teal/95">Myth: {item.myth}</span>
+                </span>
+                <span
+                  class="mt-0.5 shrink-0 text-brand-teal/60 transition group-open:rotate-180"
+                  aria-hidden="true"
+                >
+                  ▼
+                </span>
+              </summary>
+              <div class="border-t border-brand-cyan/25 bg-brand-surface/95 px-4 py-4 text-brand-teal/90">
+                <p class="text-xs font-bold uppercase tracking-wide text-brand-cyan/90">
+                  Reality
+                </p>
+                <p class="mt-2 leading-relaxed">{item.reality}</p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+
+    <nav class="mt-14 flex flex-wrap gap-3 border-t border-brand-teal/10 pt-10" aria-label="About section">
+      <a
+        href="/about/neurodiversity/"
+        class="inline-flex rounded-full border-2 border-brand-teal/25 bg-white px-4 py-2 text-sm font-semibold text-brand-teal transition hover:border-brand-teal/40"
+        >What is neurodiversity?</a
+      >
+      <a
+        href="/about/you-define-yourself/"
+        class="inline-flex rounded-full border-2 border-brand-teal/25 bg-white px-4 py-2 text-sm font-semibold text-brand-teal transition hover:border-brand-teal/40"
+        >You define yourself</a
+      >
+      <a
+        href="/about/"
+        class="inline-flex rounded-full bg-brand-teal px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-teal-muted"
+        >Back to About us</a
+      >
+    </nav>
+  </div>
+</PageLayout>

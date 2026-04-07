@@ -15,7 +15,7 @@ const fullTitle = title.includes("NDMDs") ? title : `${title} | NDMDs`;
 <BaseLayout title={fullTitle} description={description}>
   <div class="flex min-h-dvh flex-col">
     <SiteHeader />
-    <main id="main" class="flex-1">
+    <main id="main" class="relative z-0 flex-1">
       <slot />
     </main>
     <SiteFooter />

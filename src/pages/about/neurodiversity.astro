@@ -1,0 +1,131 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+---
+
+<PageLayout
+  title="What is neurodiversity?"
+  description="Neurodiversity, neurodivergent thinking, lived experience, and NDMDs infographics — Neurodiversity in Medicine Society."
+>
+  <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+    <header class="max-w-3xl">
+      <p class="text-sm font-semibold text-brand-teal/80">
+        <a class="underline decoration-brand-cyan underline-offset-2 hover:decoration-brand-teal" href="/about/"
+          >About</a
+        >
+        <span aria-hidden="true"> · </span>
+        <span class="text-brand-teal">What is neurodiversity?</span>
+      </p>
+      <h1 class="mt-2 text-4xl font-extrabold text-brand-teal sm:text-5xl">
+        What is neurodiversity?
+      </h1>
+    </header>
+
+    <section class="mt-12" aria-labelledby="neurodiversity-heading">
+      <h2 id="neurodiversity-heading" class="sr-only">Overview</h2>
+      <div class="mt-4 grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-brand-teal/10 bg-brand-surface p-6">
+          <h3 class="font-bold text-brand-teal">Understanding different minds</h3>
+          <p class="mt-3 text-brand-teal/90">
+            The term was coined by sociologist Judy Singer in 1998. Neurodiversity refers
+            to the natural variation in human brains. Just as biodiversity describes
+            diversity in ecosystems, neurodiversity recognises diversity in thinking,
+            learning, attention, communication, social interaction, movement, and sensory
+            experiences.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-brand-teal/10 bg-brand-surface p-6">
+          <h3 class="font-bold text-brand-teal">Neurodivergent thinking</h3>
+          <p class="mt-3 text-brand-teal/90">
+            Neurodivergent describes people whose cognitive styles differ from dominant
+            societal expectations. Common examples include autism, ADHD, dyslexia,
+            dyspraxia, dyscalculia, Tourette syndrome, and OCD. Many appear in the DSM-5,
+            but the neurodiversity framework emphasises difference, not deficit.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-brand-teal/10 bg-brand-surface p-6">
+          <h3 class="font-bold text-brand-teal">Why this matters</h3>
+          <p class="mt-3 text-brand-teal/90">
+            Historically, cognitive differences were framed mainly as mental illness,
+            intellectual disability, or developmental disorder. Neurodiversity reframes
+            these differences as natural neurological variation, experiences shaped by
+            social environments, and a mix of strengths and challenges.
+          </p>
+        </div>
+      </div>
+
+      <figure class="mt-10">
+        <img
+          src="/images/understanding-different-minds.png"
+          alt="Infographic: three columns on neurodiversity, neurodivergent thinking, and why it matters, with the NDMDs logo"
+          width={1200}
+          height={800}
+          class="w-full max-w-4xl rounded-2xl border border-brand-teal/10 bg-white p-2 shadow-sm"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="mt-3 max-w-3xl text-sm text-brand-teal/75">
+          Society infographic — understanding different minds, neurodivergent thinking,
+          and why inclusion matters.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="mt-14" aria-labelledby="lived-heading">
+      <h2 id="lived-heading" class="text-2xl font-extrabold text-brand-teal">
+        Lived experience
+      </h2>
+      <p class="mt-4 max-w-3xl text-lg text-brand-teal/90">
+        For many people, recognising neurodivergence can be:
+      </p>
+      <ul class="mt-4 max-w-3xl list-disc space-y-2 pl-6 text-lg text-brand-teal/90 marker:text-brand-teal">
+        <li>A moment of clarity, where past experiences suddenly make sense.</li>
+        <li>A pathway to meeting others who share similar experiences.</li>
+        <li>
+          Emotionally complex — with relief, pride, uncertainty, or stigma, sometimes all
+          at once.
+        </li>
+      </ul>
+      <p class="mt-6 max-w-3xl text-lg text-brand-teal/90">
+        Neurodiversity reminds us that different brains are part of normal human
+        variation. Social structures shape whether differences become barriers; only
+        understanding diversity improves inclusion.
+      </p>
+
+      <figure class="mt-10">
+        <img
+          src="/images/lived-experience.png"
+          alt="Infographic: lived experience, conclusion, follow us and join the conversation, with QR codes for member signup and Facebook"
+          width={1200}
+          height={800}
+          class="w-full max-w-4xl rounded-2xl border border-brand-teal/10 bg-white p-2 shadow-sm"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="mt-3 max-w-3xl text-sm text-brand-teal/75">
+          Lived experience, conclusion, and ways to connect (QR codes point to the same
+          destinations as our <a class="underline decoration-brand-cyan underline-offset-2" href="/contact/"
+            >contact page</a
+          > when forms and links are live).
+        </figcaption>
+      </figure>
+    </section>
+
+    <nav class="mt-14 flex flex-wrap gap-3 border-t border-brand-teal/10 pt-10" aria-label="About section">
+      <a
+        href="/about/mythbusting/"
+        class="inline-flex rounded-full border-2 border-brand-teal/25 bg-white px-4 py-2 text-sm font-semibold text-brand-teal transition hover:border-brand-teal/40"
+        >Mythbusting</a
+      >
+      <a
+        href="/about/you-define-yourself/"
+        class="inline-flex rounded-full border-2 border-brand-teal/25 bg-white px-4 py-2 text-sm font-semibold text-brand-teal transition hover:border-brand-teal/40"
+        >You define yourself</a
+      >
+      <a
+        href="/about/"
+        class="inline-flex rounded-full bg-brand-teal px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-teal-muted"
+        >Back to About us</a
+      >
+    </nav>
+  </div>
+</PageLayout>

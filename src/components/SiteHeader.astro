@@ -1,20 +1,44 @@
 ---
 const pathname = Astro.url.pathname;
-const links = [
+const path = pathname.replace(/\/$/, "") || "/";
+
+const aboutSub = [
+  { href: "/about/", label: "About us" },
+  { href: "/about/neurodiversity/", label: "What is Neurodiversity?" },
+  { href: "/about/mythbusting/", label: "Mythbusting" },
+  { href: "/about/you-define-yourself/", label: "You define yourself" },
+] as const;
+
+const mainLinks = [
   { href: "/", label: "Home" },
-  { href: "/about/", label: "About" },
   { href: "/events/", label: "Events" },
   { href: "/resources/", label: "Resources" },
   { href: "/contact/", label: "Contact" },
 ] as const;
 
-function isActive(href: string) {
-  if (href === "/") return pathname === "/" || pathname === "";
-  return pathname.startsWith(href);
+function isMainActive(href: string) {
+  const base = href.replace(/\/$/, "");
+  if (base === "") return path === "/";
+  return path === base || path.startsWith(base + "/");
 }
+
+function aboutSectionActive() {
+  return path.startsWith("/about");
+}
+
+function isAboutSubActive(href: string) {
+  const t = href.replace(/\/$/, "");
+  if (t === "/about") return path === "/about";
+  return path === t || path.startsWith(t + "/");
+}
+
+const aboutSummaryClass = aboutSectionActive()
+  ? "bg-brand-teal text-white"
+  : "text-brand-teal hover:bg-brand-surface";
 ---
 
-<header class="border-b border-brand-teal/10 bg-white/90 backdrop-blur-sm">
+<!-- relative z-50: keep nav + dropdown above <main> (later in DOM would otherwise paint on top and wash out the menu over the home hero). -->
+<header class="relative z-50 border-b border-brand-teal/10 bg-white/90 backdrop-blur-sm">
   <div
     class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6"
   >
@@ -40,19 +64,118 @@ function isActive(href: string) {
       </div>
     </a>
     <nav aria-label="Primary">
-      <ul class="flex flex-wrap items-center gap-1 sm:gap-2">
+      <ul
+        class="flex flex-col items-stretch gap-1 md:flex-row md:flex-wrap md:items-center md:justify-end md:gap-2"
+      >
+        <li>
+          <a
+            href="/"
+            class:list={[
+              "block rounded-full px-3 py-2 text-center text-sm font-semibold transition-colors sm:px-4 md:inline-block md:text-left",
+              isMainActive("/")
+                ? "bg-brand-teal text-white"
+                : "text-brand-teal hover:bg-brand-surface",
+            ]}
+            aria-current={isMainActive("/") ? "page" : undefined}
+          >
+            Home
+          </a>
+        </li>
+
+        <li class="md:hidden">
+          <details class="rounded-2xl border border-brand-teal/10 bg-white/60">
+            <summary
+              class:list={[
+                "flex cursor-pointer list-none items-center justify-between gap-2 rounded-full px-3 py-2 text-sm font-semibold [&::-webkit-details-marker]:hidden",
+                aboutSummaryClass,
+              ]}
+            >
+              <span>About</span>
+              <span class="text-xs opacity-80" aria-hidden="true">▾</span>
+            </summary>
+            <ul
+              class="mt-2 space-y-1 border-l-2 border-brand-cyan/35 py-1 pl-3"
+              role="list"
+            >
+              {
+                aboutSub.map(({ href, label }) => (
+                  <li>
+                    <a
+                      href={href}
+                      class:list={[
+                        "block rounded-lg px-2 py-1.5 text-sm font-semibold transition-colors",
+                        isAboutSubActive(href)
+                          ? "bg-brand-teal text-white"
+                          : "text-brand-teal hover:bg-brand-surface",
+                      ]}
+                      aria-current={isAboutSubActive(href) ? "page" : undefined}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </details>
+        </li>
+
+        <li class="group relative hidden md:block">
+          <a
+            href="/about/"
+            class:list={[
+              "inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold transition-colors sm:px-4",
+              aboutSectionActive()
+                ? "bg-brand-teal text-white"
+                : "text-brand-teal hover:bg-brand-surface",
+            ]}
+            aria-current={aboutSectionActive() ? "page" : undefined}
+          >
+            About
+            <span class="text-[0.65rem] opacity-90" aria-hidden="true">▾</span>
+          </a>
+          <!-- No opacity on this wrapper: opacity < 1 makes the whole panel look washed out
+               against the header’s backdrop-blur. Use visibility + pointer-events only. -->
+          <div
+            class="pointer-events-none invisible absolute left-0 top-full z-[100] pt-2 group-hover:pointer-events-auto group-hover:visible group-focus-within:pointer-events-auto group-focus-within:visible"
+          >
+            <ul
+              class="isolate min-w-[17rem] rounded-2xl border-2 border-brand-teal/20 bg-white py-2 text-brand-teal shadow-2xl"
+              role="list"
+            >
+              {
+                aboutSub.map(({ href, label }) => (
+                  <li>
+                    <a
+                      href={href}
+                      class:list={[
+                        "block px-4 py-2 text-sm font-semibold transition-colors",
+                        isAboutSubActive(href)
+                          ? "bg-brand-surface text-brand-teal"
+                          : "text-brand-teal hover:bg-brand-surface",
+                      ]}
+                      aria-current={isAboutSubActive(href) ? "page" : undefined}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </li>
+
         {
-          links.map(({ href, label }) => (
+          mainLinks.slice(1).map(({ href, label }) => (
             <li>
               <a
                 href={href}
                 class:list={[
-                  "rounded-full px-3 py-2 text-sm font-semibold transition-colors sm:px-4",
-                  isActive(href)
+                  "block rounded-full px-3 py-2 text-center text-sm font-semibold transition-colors sm:px-4 md:inline-block md:text-left",
+                  isMainActive(href)
                     ? "bg-brand-teal text-white"
                     : "text-brand-teal hover:bg-brand-surface",
                 ]}
-                aria-current={isActive(href) ? "page" : undefined}
+                aria-current={isMainActive(href) ? "page" : undefined}
               >
                 {label}
               </a>
